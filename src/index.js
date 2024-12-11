@@ -21,6 +21,8 @@ function menuPrincipal() {
         case "1":
             menuLivros();
             break;
+        case "0":
+            break;
         default:
             menuPrincipal();
     }

@@ -1,42 +1,22 @@
 import prompt from "prompt-sync";
 import menuPrincipal from "../index.js";
+import { dados } from "../../data/livros.js";
 
-function cadastrarLivro() {
-    const titulo = input("| *Titulo: ");
-    const autor = input("| * Autor: ");
-    const editora = input("| * Editora: ");
-    const emprestado = false;
-    menuLivros.push({ id, titulo, autor, editora, emprestado });
-    console.log("+----------------------------------------+");
-    console.log("| Livro cadastrado com sucesso!          |");
-    console.log("+----------------------------------------+");
-}
+const input = prompt();
 
-function editarLivros() {
-    console.log("+----------------------------------------+");
-    console.log("| Editar Livro                            ");
-    console.log("+----------------------------------------+");
-    const id = input("| * ID do livro: ");
-    const index = livros.findIndex(livro => livro.id === id);
-    if (index >= 0) {
-        const titulo = input("| * Tiulo: ");
-        const autor = input("| Autor: ");
-        const editora = input("| * Editora: ")
-        livros[index] = { ...livros[index], titulo, autor, editora };
-        console.log("+-----------------------------------+");
-        console.log("| Livro editado com sucesso!        |");
-        console.log("+-----------------------------------+");
-    } else {
-        console.log("+-----------------------------------+")
-        console.log("| Livro não encontrado!             |")
-        console.log("+-----------------------------------+")
-    }
-}
+const livros = dados;
+
 function listarTodosLivros() {
+    console.log("+-----------------------------------+");
+    console.log("| Lista de Livros                   |");
+    console.log("+-----------------------------------+");
+    livros.forEach(livro => {
+        console.log(`| Id: ${livro.id} - Título: ${livro.titulo}`)
+    });
+    console.log("+-----------------------------------+");
 }
 
 function menuLivros() {
-    const input = prompt();
     const opcoes = [
         "+-----------------------------------+",
         "| Menu Livros                       |",
@@ -57,18 +37,16 @@ function menuLivros() {
         case "0":
             menuPrincipal();
             break;
+        case "1":
+
+            break;
+        case "4":
+            listarTodosLivros();
+            menuLivros();
+            break;
         default:
-            menuPrincipal();
+            menuLivros();
     }
 }
 
 export default menuLivros;
-
-
-// {
-//     id: 1;
-//     titulo: "Harry Potter";
-//     autor: "J.K. Rowling";
-//     editora: "Rocco";
-//     emprestado: false
-// }
