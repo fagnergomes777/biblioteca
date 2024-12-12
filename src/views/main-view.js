@@ -1,11 +1,11 @@
-import PromptSync from "prompt-sync";
+import promptSync from "prompt-sync";
 
 import utils from "../utils/format-util.js";
 
 import usuarioView from "./usuario-view.js";
 import livroView from "./livro-view.js";
 
-const prompt = PromptSync();
+const prompt = promptSync();
 
 const menuPrincipal = () => {
     console.clear();
